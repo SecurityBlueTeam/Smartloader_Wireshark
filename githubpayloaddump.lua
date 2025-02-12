@@ -46,7 +46,7 @@ local function decrypt_payload(payloadfile)
 	local content = file:read("*l")
 	local ciphertext = Encryption.unhex(content)
 	local key_table = Encryption.parse_key_string(Smartloader.prefs.key)
-    local cleartext_table = Encryption.decrypt(key_table, ciphertext)
+        local cleartext_table = Encryption.decrypt(key_table, ciphertext)
 	cleartext = {}
 		for i=1, #cleartext_table do
 		table.insert(cleartext, string.char(cleartext_table[i]))
