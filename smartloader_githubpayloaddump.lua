@@ -27,9 +27,11 @@ end
 -- do a get request to identified malicious repo and write file to SmartloaderPayloads folder
 local function get_payload(strurl)
 	local payloadfile = string.match(strurl, "/files/(%d+)/(.+)") .. ".smartloader"
-	outfolder = folder .. "SmartLoaderPayloads\\"
+	outfolder = folder .. "SmartLoaderPayloads/"
 	os.execute("mkdir " .. folder .. "SmartLoaderPayloads")
-	os.execute("curl https://github.com/" .. strurl .. " -o " .. outfolder .. payloadfile )
+	cmd = "curl https://github.com" .. strurl .. " -L -o " .. outfolder .. payloadfile
+	print(cmd)
+	os.execute("curl https://github.com" .. strurl .. " -L -o " .. outfolder .. payloadfile )
 	log_file:write("\nretrieved payload: " .. payloadfile)
 	log_file:flush()
 	return payloadfile
@@ -38,7 +40,7 @@ end
 -- decode, decrypt and write
 local function decrypt_payload(payloadfile)
 
-	local payloadpath = folder .. "SmartLoaderPayloads\\" .. payloadfile
+	local payloadpath = folder .. "SmartLoaderPayloads/" .. payloadfile
 	log_file:write("\ndecrypting payload at: " .. payloadpath .. "\n")
 	log_file:flush()
 	local file = io.open(payloadpath, "r")

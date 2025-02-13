@@ -13,8 +13,8 @@ local info = {
 
 Smartloader.prefs.enabled = Pref.bool("Enable Dissector", true, "Enable or disable the dissector.")
 Smartloader.prefs.key = Pref.string("C2 Encryption Key", "89pCO1NlLRkTZgb8DtZmKwC42AQcUeXF", "Encryption key used by strain")
-Smartloader.prefs.dump_enabled = Pref.bool("Enable Dump", false, "Enable or disable dumping of payloads")
-Smartloader.prefs.dump_folder = Pref.string("Dump Folder", ".","Location to dump payloads")
+Smartloader.prefs.dump_enabled = Pref.bool("Enable Dump", true, "Enable or disable dumping of payloads")
+Smartloader.prefs.dump_folder = Pref.string("Dump Folder", "./","Location to dump payloads")
 
 set_plugin_info(info)
 
